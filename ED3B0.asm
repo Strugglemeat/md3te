@@ -1,5 +1,6 @@
 ;coming from 276DA
 
+CheckLoserByte:
 	cmpi.b #00,$10FFFD ;has no one lost yet? then leave
 	bne WhichPlayerAreWe
 	cmpi.b #$80,$100044 ;is P1 pressing D?

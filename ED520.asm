@@ -1,3 +1,9 @@
+AllowRandomIncrementing:
+	cmpi.b #01,$10FFFC ;is random on?
+	bne TimerReset
+	cmpi.b #$78,$8(A6) ;have we selected?
+	bne TimerReset
+
 RandomIncrementer:
 	addi.b #01,$10FFFE ;add 1 to "random" chr sel
 	cmpi.b #$17,$10FFFE ;is it 17?
@@ -36,8 +42,7 @@ WeArePlayer1:
 WeArePlayer2:
 	cmpi.b #02,$10FFFD ;player 2 - did they lose last time?
 	beq OriginalCode ;we are player 2 and player 2 lost last time - proceed as usual
-	;move.b $1014e6,$1014e7
-	move.b $6(A6),$7(A6) 
+	move.b $6(A6),$7(A6) 	;move.b $1014e6,$1014e7
 	jmp LeaveToChangeCursor
 
 OriginalCode:
