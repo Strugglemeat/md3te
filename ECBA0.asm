@@ -15,8 +15,9 @@ Go44488:
 	move.b $7(A5),$6(A5) ;copy p2 to p1 (cursor)
 
 	move.b #00,$10FFFD ;reset loser byte
+	;move.b #00,$D(A5) ;1014ED timer to 00
 	move.b #$7B,$8(A5) ;set status to both have selected
-	move.b #00,$10FFFB ;reset random byte
+	move.b #00,$10FFFC ;reset random byte
 	jmp $44488 original after chr selected pick
 
 LeaveWithoutDoingAnything:
